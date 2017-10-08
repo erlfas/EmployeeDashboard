@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <div class="page-header">
+            <h2>Register an employee</h2>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Register an employee</h3>
+                </div>
+                <div class="panel-body">
+                    <h:form id="reg" role="form" enctype="multipart/form-data">
+                        
+                        <div class="form-group has-feedback #{!type.valid? 'has-error' : ''}">
+                            <h:outputLabel for="type" value="Type:" rendered="true" />
+                            <div class="input-group has-feedback">
+                                <h:selectOneMenu id="type" required="true" value="#{newEmployee.type}">
+                                    <f:selectItem itemValue="FULL_TIME_EMPLOYEE" itemLabel="Full time employee" />
+                                    <f:selectItem itemValue="PART_TIME_EMPLOYEE" itemLabel="Part time employee" />
+                                </h:selectOneMenu>
+                            </div>
+                            <h:message for="type" errorClass="control-label has-error"/>
+                        </div>
+
+                        <div class="form-group has-feedback #{!firstName.valid? 'has-error' : ''}">
+                            <h:outputLabel for="firstName" value="First name" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="firstName" value="#{newEmployee.firstName}"
+                                             p:placeholder="Enter first name here" class="form-control"
+                                             binding="#{firstName}"/>
+                                <span class="#{!firstName.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="firstName" errorClass="control-label has-error"/>
+                        </div>
+
+                        <div class="form-group has-feedback #{!lastName.valid? 'has-error' : ''}">
+                            <h:outputLabel for="lastName" value="Last name" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="lastName" value="#{newEmployee.lastName}"
+                                             p:placeholder="Enter last name here" class="form-control"
+                                             binding="#{lastName}"/>
+                                <span class="#{!lastName.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="lastName" errorClass="control-label has-error"/>
+                        </div>
+
+                        <div class="form-group has-feedback #{!street.valid? 'has-error' : ''}">
+                            <h:outputLabel for="street" value="Street" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="street" value="#{newEmployee.street}"
+                                             p:placeholder="Enter street here" class="form-control"
+                                             binding="#{street}"/>
+                                <span class="#{!street.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="street" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!streetNo.valid? 'has-error' : ''}">
+                            <h:outputLabel for="streetNo" value="Street number" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="streetNo" value="#{newEmployee.streetNo}"
+                                             p:placeholder="Enter street number here" class="form-control"
+                                             binding="#{streetNo}"/>
+                                <span class="#{!streetNo.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="streetNo" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!postalCode.valid? 'has-error' : ''}">
+                            <h:outputLabel for="postalCode" value="Postal code" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="postalCode" value="#{newEmployee.postalCode}"
+                                             p:placeholder="Enter postal code here" class="form-control"
+                                             binding="#{postalCode}"/>
+                                <span class="#{!postalCode.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="postalCode" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!city.valid? 'has-error' : ''}">
+                            <h:outputLabel for="city" value="City" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="city" value="#{newEmployee.city}"
+                                             p:placeholder="Enter city here" class="form-control"
+                                             binding="#{city}"/>
+                                <span class="#{!city.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="city" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!dateOfBirth.valid? 'has-error' : ''}">
+                            <h:outputLabel for="dateOfBirth" value="Date of birth" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="dateOfBirth" value="#{newEmployee.dateOfBirth}"
+                                             p:placeholder="Enter date of birth here" class="form-control"
+                                             binding="#{dateOfBirth}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/>  
+                                </h:inputText>
+                                <span class="#{!dateOfBirth.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="dateOfBirth" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!email.valid? 'has-error' : ''}">
+                            <h:outputLabel for="email" value="Email" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="email" value="#{newEmployee.email}"
+                                             p:placeholder="Enter email here" class="form-control"
+                                             binding="#{email}"/>
+                                <span class="#{!email.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="email" errorClass="control-label has-error"/>
+                        </div>
+                        
+                        <div class="form-group has-feedback #{!mobilePhone.valid? 'has-error' : ''}">
+                            <h:outputLabel for="mobilePhone" value="Mobile phone" styleClass="control-label"/>
+
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="mobilePhone" value="#{newEmployee.mobilePhone}"
+                                             p:placeholder="Enter mobile phone number here" class="form-control"
+                                             binding="#{mobilePhone}"/>
+                                <span class="#{!mobilePhone.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                            </div>
+                            <h:message for="mobilePhone" errorClass="control-label has-error"/>
+                        </div>
+
+                        <div class="form-group">
+                            <h:commandButton id="Add"
+                                             action="#{employeeService.addNewEmployee}" value="Add"
+                                             styleClass="btn btn-primary"/>
+                        </div>
+                        <h:messages styleClass="messages"
+                                    style="list-style: none; padding:0; margin:0;"
+                                    errorClass="alert alert-error" infoClass="alert alert-success"
+                                    warnClass="alert alert-warning" globalOnly="true"/>
+
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Employees</h2>
+                </div>
+                <div class="panel-body">
+
+                </div>
+                <h:panelGroup rendered="#{empty employees}">
+                    <em>No employees added</em>
+                </h:panelGroup>
+                <h:dataTable var="employee" value="#{employees}"
+                             rendered="#{not empty employees}"
+                             styleClass="table table-hover table-striped ">
+                    <h:column>
+                        <f:facet name="header">First name</f:facet>
+                            #{employee.firstName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Last name</f:facet>
+                            #{employee.lastName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Street</f:facet>
+                            #{employee.street}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Street no</f:facet>
+                            #{employee.streetNo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Postal code</f:facet>
+                            #{employee.postalCode}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">City</f:facet>
+                            #{employee.city}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Date of birth</f:facet>
+                            #{employee.dateOfBirth}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                            #{employee.email}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Mobile phone</f:facet>
+                            #{employee.mobilePhone}
+                    </h:column>
+                </h:dataTable>
+
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

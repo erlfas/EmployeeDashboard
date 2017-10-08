@@ -1,5 +1,6 @@
 package no.fasmer.employeedashboard.dao;
 
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -13,6 +14,14 @@ public class EmployeeDao extends AbstractDao<Employee> {
     
     public EmployeeDao() {
         super(Employee.class);
+    }
+    
+    public List<Employee> getAllFullTimeEmployees() {
+        return em.createNamedQuery("findAllFullTimeEmployees").getResultList();
+    }
+    
+    public List<Employee> getAllPartTimeEmployees() {
+        return em.createNamedQuery("findAllPartTimeEmployees").getResultList();
     }
     
 }

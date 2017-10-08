@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
+//@Entity
 public class AreaOfExpertise implements Serializable {
 
     @Id
@@ -22,7 +22,7 @@ public class AreaOfExpertise implements Serializable {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeId")
-    private Employee expert;
+    private Employee employee;
 
     public Long getId() {
         return id;
@@ -40,15 +40,15 @@ public class AreaOfExpertise implements Serializable {
         this.expertise = expertise;
     }
 
-    public Employee getExpert() {
-        return expert;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setExpert(Employee employee) {
-        this.expert = employee;
-        if (!employee.getAreaOfExpertises().contains(this)) {
-            employee.getAreaOfExpertises().add(this);
-        }
-    }
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//        if (!employee.getAreaOfExpertises().contains(this)) {
+//            employee.getAreaOfExpertises().add(this);
+//        }
+//    }
     
 }
