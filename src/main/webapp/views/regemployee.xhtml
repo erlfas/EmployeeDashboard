@@ -17,9 +17,9 @@
                 </div>
                 <div class="panel-body">
                     <h:form id="reg" role="form" enctype="multipart/form-data">
-                        
-                        <div class="form-group has-feedback #{!type.valid? 'has-error' : ''}">
-                            <h:outputLabel for="type" value="Type:" rendered="true" />
+
+                        <div class="form-group ">
+                            <h:outputLabel for="type" value="Type" />
                             <div class="input-group has-feedback">
                                 <h:selectOneMenu id="type" required="true" value="#{newEmployee.type}">
                                     <f:selectItem itemValue="FULL_TIME_EMPLOYEE" itemLabel="Full time employee" />
@@ -29,34 +29,19 @@
                             </div>
                             <h:message for="type" errorClass="control-label has-error"/>
                         </div>
-                        
-                        <h:panelGroup rendered="#{newEmployee.fullTimeEmployee}">
-                            <div class="form-group has-feedback #{!salary.valid? 'has-error' : ''}">
-                                <h:outputLabel for="salary" value="Salary:" styleClass="control-label"/>
 
-                                <div class="input-group  has-feedback">
-                                    <h:inputText id="salary" value="#{newEmployee.salary}"
-                                                 p:placeholder="Enter salary here" class="form-control"
-                                                 binding="#{salary}"/>
-                                    <span class="#{!salary.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
-                                </div>
-                                <h:message for="salary" errorClass="control-label has-error"/>
-                            </div>
-                        </h:panelGroup>
-                        
-                        <h:panelGroup rendered="#{newEmployee.partTimeEmployee}">
-                            <div class="form-group has-feedback #{!hourlyWage.valid? 'has-error' : ''}">
-                                <h:outputLabel for="hourlyWage" value="Hourly wage:" styleClass="control-label"/>
+                        <div class="form-group has-feedback #{!salary.valid? 'has-error' : ''}">
+                            <h:outputLabel for="salary" value="Salary" styleClass="control-label" rendered="#{newEmployee.fullTimeEmployee}" />
+                            <h:outputLabel for="salary" value="Hourly wage" styleClass="control-label" rendered="#{newEmployee.partTimeEmployee}" />
 
-                                <div class="input-group  has-feedback">
-                                    <h:inputText id="hourlyWage" value="#{newEmployee.hourlyWage}"
-                                                 p:placeholder="Enter hourly wage here" class="form-control"
-                                                 binding="#{hourlyWage}"/>
-                                    <span class="#{!hourlyWage.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
-                                </div>
-                                <h:message for="hourlyWage" errorClass="control-label has-error"/>
+                            <div class="input-group  has-feedback">
+                                <h:inputText id="salary" value="#{newEmployee.salary}"
+                                             p:placeholder="#{newEmployee.salaryPlaceholder}" class="form-control"
+                                             binding="#{salary}"/>
+                                <span class="#{!salary.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
                             </div>
-                        </h:panelGroup>
+                            <h:message for="salary" errorClass="control-label has-error"/>
+                        </div>
 
                         <div class="form-group has-feedback #{!firstName.valid? 'has-error' : ''}">
                             <h:outputLabel for="firstName" value="First name" styleClass="control-label"/>
@@ -93,7 +78,7 @@
                             </div>
                             <h:message for="street" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!streetNo.valid? 'has-error' : ''}">
                             <h:outputLabel for="streetNo" value="Street number" styleClass="control-label"/>
 
@@ -105,7 +90,7 @@
                             </div>
                             <h:message for="streetNo" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!postalCode.valid? 'has-error' : ''}">
                             <h:outputLabel for="postalCode" value="Postal code" styleClass="control-label"/>
 
@@ -117,7 +102,7 @@
                             </div>
                             <h:message for="postalCode" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!city.valid? 'has-error' : ''}">
                             <h:outputLabel for="city" value="City" styleClass="control-label"/>
 
@@ -129,7 +114,7 @@
                             </div>
                             <h:message for="city" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!dateOfBirth.valid? 'has-error' : ''}">
                             <h:outputLabel for="dateOfBirth" value="Date of birth" styleClass="control-label"/>
 
@@ -143,7 +128,7 @@
                             </div>
                             <h:message for="dateOfBirth" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!email.valid? 'has-error' : ''}">
                             <h:outputLabel for="email" value="Email" styleClass="control-label"/>
 
@@ -155,7 +140,7 @@
                             </div>
                             <h:message for="email" errorClass="control-label has-error"/>
                         </div>
-                        
+
                         <div class="form-group has-feedback #{!mobilePhone.valid? 'has-error' : ''}">
                             <h:outputLabel for="mobilePhone" value="Mobile phone" styleClass="control-label"/>
 
@@ -232,6 +217,10 @@
                     <h:column>
                         <f:facet name="header">Mobile phone</f:facet>
                             #{employee.mobilePhone}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Salary</f:facet>
+                            #{employee.salary}
                     </h:column>
                 </h:dataTable>
 

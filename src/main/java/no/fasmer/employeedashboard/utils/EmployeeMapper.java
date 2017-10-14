@@ -17,6 +17,12 @@ public class EmployeeMapper {
         vo.setFirstName(employee.getFirstName());
         vo.setLastName(employee.getLastName());
         vo.setDateOfBirth(employee.getDateOfBirth());
+        
+        if (employee instanceof FullTimeEmployee) {
+            vo.setSalary(((FullTimeEmployee) employee).getSalary());
+        } else if (employee instanceof PartTimeEmployee) {
+            vo.setSalary(((PartTimeEmployee)employee).getHourlyWage());
+        }
 
 //        for (AreaOfExpertise areaOfExpertise : employee.getAreaOfExpertises()) {
 //            vo.addAreaOfExpertise(areaOfExpertise.getExpertise());
@@ -48,9 +54,11 @@ public class EmployeeMapper {
             default:
             case FULL_TIME_EMPLOYEE:
                 employee = new FullTimeEmployee();
+                ((FullTimeEmployee) employee).setSalary(vo.getSalary());
                 break;
             case PART_TIME_EMPLOYEE:
                 employee = new PartTimeEmployee();
+                ((PartTimeEmployee)employee).setHourlyWage(vo.getSalary());
                 break;
         }
 

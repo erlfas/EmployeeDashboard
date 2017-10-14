@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.faces.event.AjaxBehaviorEvent;
 import no.fasmer.employeedashboard.enums.EmployeeType;
 
 public class EmployeeVO implements Serializable {
@@ -34,8 +35,6 @@ public class EmployeeVO implements Serializable {
     
     private Integer salary;
     
-    private Integer hourlyWage;
-    
     protected List<String> areaOfExpertises;
 
     public EmployeeVO() {
@@ -64,6 +63,14 @@ public class EmployeeVO implements Serializable {
 
     public EmployeeType getType() {
         return type;
+    }
+    
+    public String getSalaryPlaceholder() {
+        if (isFullTimeEmployee()) {
+            return "Enter salary here";
+        }
+        
+        return "Enter hourly wage here";
     }
     
     public boolean isFullTimeEmployee() {
@@ -176,14 +183,6 @@ public class EmployeeVO implements Serializable {
 
     public void setSalary(Integer salary) {
         this.salary = salary;
-    }
-
-    public Integer getHourlyWage() {
-        return hourlyWage;
-    }
-
-    public void setHourlyWage(Integer hourlyWage) {
-        this.hourlyWage = hourlyWage;
     }
 
     public List<String> getAreaOfExpertises() {
