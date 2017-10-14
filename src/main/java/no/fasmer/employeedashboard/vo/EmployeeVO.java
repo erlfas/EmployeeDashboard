@@ -32,9 +32,14 @@ public class EmployeeVO implements Serializable {
     
     private String mobilePhone;
     
+    private Integer salary;
+    
+    private Integer hourlyWage;
+    
     protected List<String> areaOfExpertises;
 
     public EmployeeVO() {
+        this.type = EmployeeType.FULL_TIME_EMPLOYEE;
     }
 
     public EmployeeVO(
@@ -42,6 +47,7 @@ public class EmployeeVO implements Serializable {
             String postalCode, String city, Date dateOfBirth, Date startDate, 
             Date endDate, String email, String mobilePhone) {
         
+        this.type = EmployeeType.FULL_TIME_EMPLOYEE;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -58,6 +64,14 @@ public class EmployeeVO implements Serializable {
 
     public EmployeeType getType() {
         return type;
+    }
+    
+    public boolean isFullTimeEmployee() {
+        return type == EmployeeType.FULL_TIME_EMPLOYEE;
+    }
+    
+    public boolean isPartTimeEmployee() {
+        return type == EmployeeType.PART_TIME_EMPLOYEE;
     }
 
     public void setType(EmployeeType type) {
@@ -154,6 +168,22 @@ public class EmployeeVO implements Serializable {
 
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public Integer getHourlyWage() {
+        return hourlyWage;
+    }
+
+    public void setHourlyWage(Integer hourlyWage) {
+        this.hourlyWage = hourlyWage;
     }
 
     public List<String> getAreaOfExpertises() {

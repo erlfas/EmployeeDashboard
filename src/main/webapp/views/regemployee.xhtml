@@ -24,10 +24,39 @@
                                 <h:selectOneMenu id="type" required="true" value="#{newEmployee.type}">
                                     <f:selectItem itemValue="FULL_TIME_EMPLOYEE" itemLabel="Full time employee" />
                                     <f:selectItem itemValue="PART_TIME_EMPLOYEE" itemLabel="Part time employee" />
+                                    <f:ajax render="@form" />
                                 </h:selectOneMenu>
                             </div>
                             <h:message for="type" errorClass="control-label has-error"/>
                         </div>
+                        
+                        <h:panelGroup rendered="#{newEmployee.fullTimeEmployee}">
+                            <div class="form-group has-feedback #{!salary.valid? 'has-error' : ''}">
+                                <h:outputLabel for="salary" value="Salary:" styleClass="control-label"/>
+
+                                <div class="input-group  has-feedback">
+                                    <h:inputText id="salary" value="#{newEmployee.salary}"
+                                                 p:placeholder="Enter salary here" class="form-control"
+                                                 binding="#{salary}"/>
+                                    <span class="#{!salary.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                                </div>
+                                <h:message for="salary" errorClass="control-label has-error"/>
+                            </div>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup rendered="#{newEmployee.partTimeEmployee}">
+                            <div class="form-group has-feedback #{!hourlyWage.valid? 'has-error' : ''}">
+                                <h:outputLabel for="hourlyWage" value="Hourly wage:" styleClass="control-label"/>
+
+                                <div class="input-group  has-feedback">
+                                    <h:inputText id="hourlyWage" value="#{newEmployee.hourlyWage}"
+                                                 p:placeholder="Enter hourly wage here" class="form-control"
+                                                 binding="#{hourlyWage}"/>
+                                    <span class="#{!hourlyWage.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}"/>
+                                </div>
+                                <h:message for="hourlyWage" errorClass="control-label has-error"/>
+                            </div>
+                        </h:panelGroup>
 
                         <div class="form-group has-feedback #{!firstName.valid? 'has-error' : ''}">
                             <h:outputLabel for="firstName" value="First name" styleClass="control-label"/>
