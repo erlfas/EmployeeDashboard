@@ -183,6 +183,10 @@
                              rendered="#{not empty employees}"
                              styleClass="table table-hover table-striped ">
                     <h:column>
+                        <f:facet name="header">Type</f:facet>
+                            #{employee.typeShort}
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">First name</f:facet>
                             #{employee.firstName}
                     </h:column>

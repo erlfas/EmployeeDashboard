@@ -60,6 +60,14 @@ public class EmployeeVO implements Serializable {
         this.mobilePhone = mobilePhone;
         
     }
+    
+    public String getTypeShort() {
+        if (isFullTimeEmployee()) {
+            return "full time";
+        }
+        
+        return "part time";
+    }
 
     public EmployeeType getType() {
         return type;

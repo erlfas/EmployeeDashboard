@@ -7,6 +7,7 @@ import no.fasmer.employeedashboard.entity.Employee;
 import no.fasmer.employeedashboard.entity.EmploymentPeriod;
 import no.fasmer.employeedashboard.entity.FullTimeEmployee;
 import no.fasmer.employeedashboard.entity.PartTimeEmployee;
+import no.fasmer.employeedashboard.enums.EmployeeType;
 import no.fasmer.employeedashboard.vo.EmployeeVO;
 
 public class EmployeeMapper {
@@ -19,8 +20,10 @@ public class EmployeeMapper {
         vo.setDateOfBirth(employee.getDateOfBirth());
         
         if (employee instanceof FullTimeEmployee) {
+            vo.setType(EmployeeType.FULL_TIME_EMPLOYEE);
             vo.setSalary(((FullTimeEmployee) employee).getSalary());
         } else if (employee instanceof PartTimeEmployee) {
+            vo.setType(EmployeeType.PART_TIME_EMPLOYEE);
             vo.setSalary(((PartTimeEmployee)employee).getHourlyWage());
         }
 
