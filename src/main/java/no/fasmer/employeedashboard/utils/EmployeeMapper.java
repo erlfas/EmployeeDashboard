@@ -1,7 +1,6 @@
 package no.fasmer.employeedashboard.utils;
 
 import no.fasmer.employeedashboard.entity.Address;
-import no.fasmer.employeedashboard.entity.AreaOfExpertise;
 import no.fasmer.employeedashboard.entity.ContactInformation;
 import no.fasmer.employeedashboard.entity.Employee;
 import no.fasmer.employeedashboard.entity.EmploymentPeriod;
@@ -26,10 +25,6 @@ public class EmployeeMapper {
             vo.setType(EmployeeType.PART_TIME_EMPLOYEE);
             vo.setSalary(((PartTimeEmployee)employee).getHourlyWage());
         }
-
-//        for (AreaOfExpertise areaOfExpertise : employee.getAreaOfExpertises()) {
-//            vo.addAreaOfExpertise(areaOfExpertise.getExpertise());
-//        }
 
         if (employee.getAddress() != null) {
             vo.setCity(employee.getAddress().getCity());
@@ -86,13 +81,6 @@ public class EmployeeMapper {
         employmentPeriod.setStartDate(vo.getStartDate());
         employmentPeriod.setEndDate(vo.getEndDate());
         employee.setEmploymentPeriod(employmentPeriod);
-
-//        for (String areaOfExpertiseStr : vo.getAreaOfExpertises()) {
-//            final AreaOfExpertise areaOfExpertise = new AreaOfExpertise();
-//            areaOfExpertise.setEmployee(employee);
-//            areaOfExpertise.setExpertise(areaOfExpertiseStr);
-//            employee.addAreaOfExpertise(areaOfExpertise);
-//        }
 
         return employee;
     }

@@ -1,10 +1,7 @@
 package no.fasmer.employeedashboard.vo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.faces.event.AjaxBehaviorEvent;
 import no.fasmer.employeedashboard.enums.EmployeeType;
 
 public class EmployeeVO implements Serializable {
@@ -34,8 +31,6 @@ public class EmployeeVO implements Serializable {
     private String mobilePhone;
     
     private Integer salary;
-    
-    protected List<String> areaOfExpertises;
 
     public EmployeeVO() {
         this.type = EmployeeType.FULL_TIME_EMPLOYEE;
@@ -191,22 +186,6 @@ public class EmployeeVO implements Serializable {
 
     public void setSalary(Integer salary) {
         this.salary = salary;
-    }
-
-    public List<String> getAreaOfExpertises() {
-        return areaOfExpertises;
-    }
-
-    public void setAreaOfExpertises(List<String> areaOfExpertises) {
-        this.areaOfExpertises = areaOfExpertises;
-    }
-    
-    public void addAreaOfExpertise(String areaOfExpertise) {
-        if (this.areaOfExpertises == null) {
-            this.areaOfExpertises = new ArrayList<>();
-        }
-        
-        this.areaOfExpertises.add(areaOfExpertise);
     }
     
 }
